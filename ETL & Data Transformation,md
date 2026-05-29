@@ -1,0 +1,379 @@
+1. What is ETL?
+Answer:
+
+ETL stands for Extract, Transform, Load. It is a data integration process used to move data from multiple sources into a data warehouse or BI tool like Power BI.
+
+Steps:
+Extract → Collect data from sources
+Transform → Clean and process data
+Load → Load into target system (Power BI / Database)
+Example:
+
+Extract sales data from Excel → Clean missing values → Load into Power BI model.
+
+2. What is Data Transformation?
+Answer:
+
+Data Transformation is the process of converting raw data into a clean, structured, and usable format for analysis.
+
+Example transformations:
+Changing data types
+Removing duplicates
+Splitting columns
+Merging tables
+Handling null values
+3. What is the difference between ETL and ELT?
+Answer:
+ETL	ELT
+Transform before loading	Load before transforming
+Used in traditional systems	Used in modern cloud systems
+Example: Power BI, SSIS	Example: Snowflake, Azure Synapse
+4. Why is ETL important in Power BI?
+Answer:
+
+ETL ensures that data is:
+
+Clean
+Accurate
+Consistent
+Ready for analysis
+
+Without ETL, dashboards may show incorrect insights.
+
+5. What is Power Query in ETL?
+Answer:
+
+Power Query is the ETL engine in Power BI used to extract, transform, and load data.
+
+Features:
+Data cleaning
+Merging tables
+Removing errors
+Data shaping
+6. What are common data transformation steps in Power BI?
+Answer:
+Remove duplicates
+Remove null values
+Rename columns
+Change data types
+Split columns
+Merge queries
+Filter rows
+Replace values
+7. What is data cleaning?
+Answer:
+
+Data cleaning is the process of fixing or removing incorrect, incomplete, or inconsistent data.
+
+Example:
+Removing blank rows
+Fixing spelling errors
+Handling missing values
+8. How do you handle missing data in Power BI?
+Answer:
+
+Common methods:
+
+Remove rows with null values
+Replace with mean/median
+Replace with default value (0, “Unknown”)
+Use Power Query transformations
+9. What is data profiling in Power BI?
+Answer:
+
+Data profiling helps analyze data quality before transformation.
+
+It shows:
+Column quality
+Column distribution
+Data errors
+Empty values
+10. What is M language in Power Query?
+Answer:
+
+M language is the formula language used in Power Query for data transformation.
+
+Example:
+Table.RemoveColumns(Source, {"Column1"})
+11. Difference between Power Query and DAX in ETL?
+Answer:
+Power Query	DAX
+Used for data transformation	Used for calculations
+Runs before data load	Runs after data load
+ETL tool	Analytical tool
+12. What is data loading in ETL?
+Answer:
+
+Data loading is the final step where transformed data is loaded into Power BI for reporting and visualization.
+
+13. What are the types of data loading in Power BI?
+Answer:
+Import Mode
+DirectQuery Mode
+Live Connection
+14. What is incremental data loading?
+Answer:
+
+Incremental loading means only new or updated data is loaded instead of full dataset refresh.
+
+Benefits:
+Faster performance
+Less resource usage
+Efficient processing
+15. What is data integration?
+Answer:
+
+Data integration is combining data from multiple sources into a unified view for analysis.
+
+Example:
+
+Combining:
+
+Excel sales data
+SQL database
+API data
+16. What are data transformation challenges?
+Answer:
+Missing values
+Inconsistent formats
+Duplicate records
+Large datasets
+Data type mismatches
+17. What is data type conversion?
+Answer:
+
+Changing a column from one type to another (e.g., text → number, text → date).
+
+Example:
+
+"1000" → 1000 (integer)
+
+18. What is query folding in Power BI?
+Answer:
+
+Query folding is when Power Query transformations are pushed back to the data source (like SQL Server) for better performance.
+
+Benefit:
+
+Faster data processing
+
+19. What happens if query folding is broken?
+Answer:
+Data processing becomes slower
+Transformations are done in Power BI instead of source
+Increases memory usage
+20. What is append vs merge in Power Query?
+Answer:
+Append:
+
+Combines rows from multiple tables (vertical join)
+
+Merge:
+
+Combines columns from tables using a key (like SQL JOIN)
+
+21. What is a data pipeline?
+Answer:
+
+A data pipeline is a series of steps that move data from source to destination through extraction, transformation, and loading.
+
+22. What is staging data?
+Answer:
+
+Staging data is temporary storage where raw data is stored before transformation.
+
+23. What is normalization in data transformation?
+Answer:
+
+Normalization reduces data redundancy by organizing data into structured tables.
+
+24. What is denormalization?
+Answer:
+
+Denormalization combines tables to improve read performance in reporting systems like Power BI.
+
+25. Real Interview Scenario Question
+Q:
+
+How would you handle a messy dataset in Power BI?
+
+Answer:
+Import data into Power Query
+Remove duplicates
+Handle missing values
+Standardize formats
+Change data types
+Merge required tables
+Validate data accuracy
+Load into Power BI model
+🔥 Bonus Senior-Level Question
+26. How do you optimize ETL performance in Power BI?
+Answer:
+Use query folding
+Reduce data volume
+Remove unnecessary columns early
+Avoid complex transformations
+Use database-side transformations
+Prefer Import mode when possible
+
+
+
+1. Real-Time ETL Project (End-to-End Power BI)
+🧠 Project Title:
+
+Retail Sales ETL Pipeline & Analytics Dashboard
+
+🎯 Business Problem
+
+A retail company wants:
+
+Clean sales data
+Daily updated reports
+Profit & revenue insights
+Inventory tracking
+🔗 Data Sources
+Excel (Sales data)
+SQL Server (Customer data)
+CSV (Inventory data)
+API (Exchange rates / live data)
+⚙️ ETL Process
+1. Extract
+Import data from Excel, SQL, CSV, API
+2. Transform (Power Query)
+Cleaning Steps:
+Remove duplicates
+Handle null values
+Fix date formats
+Standardize product names
+Transformation Steps:
+Merge Sales + Customer table
+Append monthly sales files
+Create calculated columns (Profit)
+Split Address → City, State
+3. Load
+Load final model into Power BI
+Build Star Schema
+🧩 Data Model
+FactSales (Main table)
+DimCustomer
+DimProduct
+DimDate
+DimRegion
+📊 DAX Measures
+Total Sales = SUM(Sales[Amount])
+Total Profit = SUM(Sales[Profit])
+Profit Margin = DIVIDE([Total Profit], [Total Sales])
+YTD Sales = TOTALYTD([Total Sales], Date[Date])
+📈 Dashboard Pages
+Page 1: Executive Dashboard
+Revenue
+Profit
+Orders
+Growth %
+Page 2: Product Analysis
+Top products
+Category performance
+Page 3: Customer Analysis
+Customer segmentation
+Region performance
+Page 4: Inventory
+Stock levels
+Low stock alerts
+🔐 Security
+Row-Level Security (RLS)
+Region-based access
+⚡ Performance Optimization
+Star schema design
+Query folding enabled
+Reduced columns
+Measures instead of calculated columns
+2. SQL + Power BI ETL Interview Set
+Q1. What is the role of SQL in ETL?
+
+Answer:
+SQL is used to extract, filter, and transform data before loading into Power BI.
+
+Q2. Difference between WHERE and HAVING?
+WHERE → Filters rows before grouping
+HAVING → Filters after aggregation
+Q3. What is JOIN used for in ETL?
+
+Used to combine data from multiple tables.
+
+Types:
+
+INNER JOIN
+LEFT JOIN
+RIGHT JOIN
+FULL JOIN
+Q4. What is GROUP BY used for?
+
+Used to aggregate data.
+
+Example:
+Total sales per region.
+
+Q5. SQL vs Power Query?
+SQL	Power Query
+Database level	Power BI level
+Faster	Flexible
+Pre-processing	Visualization prep
+3. Advanced DAX + ETL Combined Questions
+Q1. Why is ETL important before DAX?
+
+Because:
+
+DAX works on clean model
+ETL reduces complexity
+Improves performance
+Q2. When do you use Power Query vs DAX?
+Power Query → Data cleaning
+DAX → Calculations & KPIs
+Q3. What is the impact of poor ETL design?
+Slow dashboards
+Incorrect KPIs
+High memory usage
+Refresh failures
+Q4. What is context in ETL vs DAX?
+ETL → Row-level transformation
+DAX → Filter + row context calculations
+4. Scenario-Based Interview Test (Very Important)
+Scenario 1
+Problem:
+
+Sales data has duplicates and incorrect totals.
+
+Solution:
+Remove duplicates in Power Query
+Validate primary keys
+Use DISTINCTCOUNT in DAX
+Scenario 2
+Problem:
+
+Dashboard is very slow.
+
+Solution:
+Reduce dataset size
+Use Star schema
+Enable query folding
+Avoid unnecessary visuals
+Scenario 3
+Problem:
+
+Data from multiple sources is inconsistent.
+
+Solution:
+Standardize formats
+Use Power Query transformations
+Create mapping table
+
+
+🚀 5. Interview Master Answer (Use This)
+
+👉 If interviewer asks:
+
+“Explain your ETL process in Power BI”
+
+Answer:
+
+I extract data from multiple sources like SQL, Excel, and APIs. Then I use Power Query to clean, transform, and standardize the data by removing duplicates, handling nulls, and merging tables. After that, I build a star schema data model and load it into Power BI. Finally, I create DAX measures and dashboards for business insights with optimized performance and security using RLS.
